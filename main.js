@@ -32,23 +32,37 @@ const printBoard = () => {
   console.log('2 ' + board[2].join(' | '));
 }
 
+
 const horizontalWin = () => {
-  // Your code here to check for horizontal wins
+  if (board[0][0] + board[0][1] + board[0][2] === 'XXX' || board[0][0] + board[0][1] + board[0][2] === 'OOO') {return true} 
+  else if (board[1][0] + board[1][1] + board[1][2] === 'XXX' || board[1][0] + board[1][1] + board[1][2] === 'OOO') {return true}
+  else if (board[2][0] + board[2][1] + board[2][2] === 'XXX' || board[2][0] + board[2][1] + board[2][2] === 'OOO') {return true}
+  else {return false}
 }
 
 const verticalWin = () => {
-  // Your code here to check for vertical wins
+  if (board[0][0] + board[1][0] + board[2][0] === 'XXX' || board[0][0] + board[1][0] + board[2][0] === 'OOO') {return true} 
+  else if (board[0][1] + board[1][1] + board[2][1] === 'XXX' || board[0][1] + board[1][1] + board[2][1] === 'OOO') {return true}
+  else if (board[0][2] + board[1][2] + board[2][2] === 'XXX' || board[0][2] + board[1][2] + board[2][2] === 'OOO') {return true}
+  else {return false}
 }
 
 const diagonalWin = () => {
-  // Your code here to check for diagonal wins
+  if (board[0][0] + board[1][1] + board[2][2] === 'XXX' || board[0][0] + board[1][1] + board[2][2] === 'OOO') {return true} 
+  else if (board[0][2] + board[1][1] + board[2][0] === 'XXX' || board[0][2] + board[1][1] + board[2][0] === 'OOO') {return true}
+  else {return false}
 }
 
 const checkForWin = () => {
+  if (horizontalWin() || verticalWin() || diagonalWin()) {return true}
+  else {return false}
   // Your code here call each of the check for types of wins
 }
 
 const ticTacToe = (row, column) => {
+  board[row][column] = playerTurn
+  if (playerTurn == 'X') {playerTurn = 'O'}
+  else {playerTurn = 'X'}
   // Your code here to place a marker on the board
   // then check for a win
 }
